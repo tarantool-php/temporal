@@ -16,7 +16,7 @@ class Override
         public int $timestamp,
         public int $actor,
         public array $data,
-        public int $idle = 0,
+        public int $idle,
     ) {
     }
 
