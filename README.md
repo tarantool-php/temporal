@@ -1,5 +1,5 @@
 # Tarantool temporal
-[![License](https://poser.pugx.org/tarantool/temporal/license.png)](https://packagist.org/packages/tarantool/temporal)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Testing](https://github.com/tarantool-php/temporal/actions/workflows/tests.yml/badge.svg)](https://github.com/tarantool-php/temporal/actions/workflows/tests.yml)
 [![Latest Version](https://img.shields.io/github/release/tarantool-php/temporal.svg?style=flat-square)](https://github.com/tarantool-php/temporal/releases)
 [![Total Downloads](https://img.shields.io/packagist/dt/tarantool/temporal.svg?style=flat-square)](https://packagist.org/packages/tarantool/temporal)
