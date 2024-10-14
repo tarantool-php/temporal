@@ -1,0 +1,28 @@
+{
+    "name": "tarantool/temporal",
+    "description": "Temporal api for Tarantool mapper.",
+    "keywords": ["tarantool", "client", "pure", "nosql", "mapper", "temporal"],
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "nesbot/carbon": "^3.8",
+        "php": ">=8.0",
+        "tarantool/mapper": ">=6.0.0"
+    },
+    "require-dev": {
+        "monolog/monolog": "^2.9.3",
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Tarantool\\Temporal\\": "src/",
+            "Tarantool\\Temporal\\Tests\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Dmitry Krokhin",
+            "email": "nekufa@gmail.com"
+        }
+    ]
+}
