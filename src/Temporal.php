@@ -54,9 +54,9 @@ class Temporal
         return $this->findOrCreate(Entity::class, ['name' => $name])->id;
     }
 
-    public function getSpace(string $name): Space
+    public function getSpace(object|int|string $id): Space
     {
-        return $this->mapper->getSpace($name);
+        return $this->mapper->getSpace($id);
     }
 
     public function hasSpace(string $class): bool
@@ -337,9 +337,7 @@ class Temporal
             return;
         }
 
-        $this->mapper->update(Link::class, $link, [
-            'idle' => $link->idle ? 0 : time()
-        ]);
+        $this->mapper->update($link, ['idle' => $link->idle ? 0 : time()]);
 
         $this->aggregator->updateLinkAggregation($link);
     }
@@ -368,9 +366,7 @@ class Temporal
             return;
         }
 
-        $this->mapper->update(Reference::class, $reference, [
-            'idle' => $reference->idle ? 0 : time()
-        ]);
+        $this->mapper->update($reference, ['idle' => $reference->idle ? 0 : time()]);
 
         $this->aggregator->updateReferenceState($reference->entity, $id, $reference->target);
     }
@@ -395,7 +391,7 @@ class Temporal
             return;
         }
 
-        $this->mapper->update(Override::class, $override, ['idle' => $flag ? time() : 0]);
+        $this->mapper->update($override, ['idle' => $flag ? time() : 0]);
 
         $this->aggregator->updateOverrideAggregation($override->entity, $override->id);
     }
@@ -421,9 +417,7 @@ class Temporal
         ]);
 
         if ($reference->end != $end) {
-            $this->mapper->update(Reference::class, $reference, [
-                'end' => $end,
-            ]);
+            $this->mapper->update($reference, ['end' => $end]);
             $this->aggregator->updateReferenceState($reference->entity, $id, $target);
         }
     }
@@ -445,7 +439,7 @@ class Temporal
         ]);
 
         if ($override->end != $end) {
-            $this->mapper->update(Override::class, $override, ['end' => $end]);
+            $this->mapper->update($override, ['end' => $end]);
             $this->aggregator->updateOverrideAggregation($entity, $id);
         }
     }
@@ -493,7 +487,7 @@ class Temporal
             throw new Exception("Invalid link configuration");
         }
 
-        $this->mapper->update(Link::class, $node, [
+        $this->mapper->update($node, [
             'begin' => $link['begin'],
             'end' => $link['end'],
             'actor' => $this->actor,
@@ -501,9 +495,7 @@ class Temporal
         ]);
 
         if (array_key_exists('data', $link)) {
-            $this->mapper->update(Link::class, $node, [
-                'data' => $link['data'],
-            ]);
+            $this->mapper->update($node, ['data' => $link['data']]);
         }
 
         $this->aggregator->updateLinkAggregation($node);
