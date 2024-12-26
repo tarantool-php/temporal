@@ -192,6 +192,7 @@ class Temporal
         $reference['entity'] = $this->getEntityId($entityName);
         $reference['actor'] = $this->actor;
         $reference['timestamp'] = Carbon::now()->timestamp;
+        $reference['idle'] = 0;
 
         $reference = $this->mapper->create(Reference::class, $reference);
 
@@ -325,6 +326,7 @@ class Temporal
         $override['entity'] = $this->getEntityId($entityName);
         $override['actor'] = $this->actor;
         $override['timestamp'] = Carbon::now()->timestamp;
+        $override['idle'] = 0;
 
         $this->mapper->create(Override::class, $override);
         $this->aggregator->updateOverrideAggregation($override['entity'], $override['id']);
